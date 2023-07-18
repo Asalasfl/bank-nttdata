@@ -1,0 +1,8 @@
+nttdata\com\api\gateway\Application.class
+nttdata\com\api\gateway\dto\TokenDTO.class
+nttdata\com\api\gateway\dto\RequestDTO.class
+nttdata\com\api\gateway\config\AutorizacionFilter$Config.class
+nttdata\com\api\gateway\config\WebClientConfig.class
+nttdata\com\api\gateway\dto\TokenDTO$TokenDTOBuilder.class
+nttdata\com\api\gateway\config\AutorizacionFilter.class
+nttdata\com\api\gateway\dto\RequestDTO$RequestDTOBuilder.class

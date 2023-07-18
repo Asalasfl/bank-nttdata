@@ -1,0 +1,2 @@
+export REGISTRY_USERNAME=alexanderd20
+export REGISTRY_PASSWORD=Fisica123*

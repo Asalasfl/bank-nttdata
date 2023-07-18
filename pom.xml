@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>nttdata.com</groupId>
+    <artifactId>azure-proyecto</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>azure-proyecto</name>
+
+    <modules>
+        <module>micro-account-customer</module>
+        <module>api-gateway</module>
+        <module>service-discovery</module>
+        <module>micro-credit-card</module>
+        <module>micro-credit</module>
+        <module>parent/pom.xml</module>
+        <module>autenticacion</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Central Repository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+</project>

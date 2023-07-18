@@ -1,0 +1,83 @@
+version: "3.8"
+
+services:
+      
+  
+  apiGateway:
+    image: ${REGISTRY_USERNAME}/image-api-gateway:${APP_VERSION}
+    container_name: api-gateway_container
+    restart: always
+    ports:
+      - "8082:8082"
+    depends_on:
+      - serviceDiscovery
+    links:
+      - serviceDiscovery:serviceDiscovery
+    networks:
+      - appnt
+  autentication:
+    image: ${REGISTRY_USERNAME}/autentication:${APP_VERSION}
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb+srv://adminMongo:Admin123*@p6zu4mw.mongodb.net/mibankdb
+    container_name: autentication_container
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - serviceDiscovery
+    links:
+      - serviceDiscovery:serviceDiscovery
+    networks:
+      - appnt
+      
+  creditCard:
+    image: ${REGISTRY_USERNAME}/micro-credit-card:${APP_VERSION}
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb+srv://adminMongo:Admin123*@p6zu4mw.mongodb.net/mibankdb
+    container_name: micro-credit-card_container
+    restart: always
+    ports:
+      - "8084:8084"
+    depends_on:
+      - serviceDiscovery
+    networks:
+      - appnt
+
+  customerAccount:
+    image: ${REGISTRY_USERNAME}/micro-customer-account:${APP_VERSION}
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb+srv://adminMongo:Admin123*@p6zu4mw.mongodb.net/mibankdb
+    container_name: customer-account_container
+    restart: always
+    ports:
+      - "8085:8085"
+    depends_on:
+      - serviceDiscovery
+    networks:
+      - appnt
+
+  credit:
+    image:  ${REGISTRY_USERNAME}/micro-credit:${APP_VERSION}
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb+srv://adminMongo:Admin123*@p6zu4mw.mongodb.net/mibankdb
+    container_name: micro-credit_container
+    restart: always
+    ports:
+      - "8086:8086"
+    depends_on:
+      - serviceDiscovery
+    networks:
+      - appnt
+      
+  serviceDiscovery:
+    image: ${REGISTRY_USERNAME}/service-discovery:${APP_VERSION}
+    container_name: service-discovery_container
+    restart: always
+    ports:
+        - "8761:8761"
+    networks:
+        - appnt
+
+networks:
+  appnt:
+    name: bank_networks

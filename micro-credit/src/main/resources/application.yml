@@ -1,0 +1,17 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: micro-credit
+  spring:
+    data:
+      mongodb:
+        uri: mongodb+srv://adminMongo:Admin123*@p6zu4mw.mongodb.net/mibankdb
+
+eureka:
+  client:
+    fetch-registry: 'true'
+    enable: 'true'
+    register-with-eureka: 'true'
+    service-url:
+      defaultZone: http://serviceDiscovery:8761/eureka

@@ -1,0 +1,41 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: apigateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+         enable: true
+
+      routes:
+        - id: micro-customer-account
+          uri: lb://MICRO-CUSTOMER-ACCOUNT
+          predicates:
+            - Path=/api/customers/**
+            - Path=/api/accounts/**
+          filters:
+            - AutorizacionFilter
+        - id: micro-credit
+          uri: lb://MICRO-CREDIT
+          predicates:
+            - Path=/api/credits/**
+
+        - id: micro-credit-card
+          uri: lb://MICRO-CREDIT-CARD
+          predicates:
+            - Path=/api/credit-cards/**
+
+        - id: autenticacion
+          uri: lb://AUTENTICACION
+          predicates:
+              - Path=/api/autenticacion/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://serviceDiscovery:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+    enabled: true
